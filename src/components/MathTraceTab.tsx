@@ -374,7 +374,6 @@ export const MathTraceTab: React.FC<MathTraceTabProps> = ({
 
   return (
     <div className="flex h-screen bg-gray-50">
-      {/* Left Sidebar */}
       <div className="w-64 bg-white border-r border-gray-200 p-4">
         <div className="mb-6">
           <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">
@@ -419,7 +418,6 @@ export const MathTraceTab: React.FC<MathTraceTabProps> = ({
         </div>
       </div>
 
-      {/* Right Content */}
       <div className="flex-1 overflow-auto">
         <div className="p-6">
           <div className="mb-4">

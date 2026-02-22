@@ -40,7 +40,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Hero Block */}
       {nextSchoolDay && (
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
           <div className="flex items-center justify-between mb-4">
@@ -63,7 +62,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
             </p>
           </div>
 
-          {/* Probability Pills */}
           <div className="flex space-x-2 mb-4">
             <div className="flex-1 bg-green-100 rounded-lg p-3 text-center">
               <div className="text-lg font-bold text-green-800">
@@ -87,7 +85,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         </div>
       )}
 
-      {/* Week at a Glance */}
       <div className="bg-white rounded-lg border border-gray-200 p-6">
         <h3 className="text-lg font-semibold mb-4">
           Week at a Glance
@@ -107,7 +104,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                   {format(prediction.date, 'M/d')}
                 </div>
                 
-                {/* Segmented probability bar */}
                 <div className="h-4 bg-gray-200 rounded-full overflow-hidden mb-2">
                   <div className="h-full flex">
                     <div 
@@ -138,7 +134,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         </div>
       </div>
 
-      {/* Why Section */}
       {nextSchoolDay && (
         <div className="bg-white rounded-lg border border-gray-200 p-6">
           <h3 className="text-lg font-semibold mb-4">Why {nextSchoolDay.mostLikelyCall}?</h3>
@@ -154,7 +149,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
             ))}
           </div>
 
-          {/* Why not cancel */}
           <div className="text-sm text-gray-600 italic">
             {nextSchoolDay.probabilities.cancel < 0.3 && (
               <p>Why not cancel: Low overall severity score ({nextSchoolDay.severityScore.toFixed(1)}) suggests manageable conditions</p>
@@ -163,7 +157,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         </div>
       )}
 
-      {/* Weekly Summary */}
       {weeklySummary && (
         <div className="bg-white rounded-lg border border-gray-200 p-6">
           <h3 className="text-lg font-semibold mb-4">
@@ -202,7 +195,6 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         </div>
       )}
 
-      {/* Action Buttons */}
       <div className="flex space-x-4">
         <button
           onClick={onViewWeek}

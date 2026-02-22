@@ -3,9 +3,6 @@ import { HourlyBucket, NWSBundle } from '../types';
 
 export class TimeBucketizerService {
   
-  /**
-   * Creates hourly buckets from now until end of Friday (local time)
-   */
   createHourlyTimeline(): Date[] {
     const now = new Date();
     const currentHour = startOfHour(now);
@@ -28,9 +25,6 @@ export class TimeBucketizerService {
     return hours;
   }
 
-  /**
-   * Converts NWS grid data into hourly buckets
-   */
   bucketizeNWSData(nwsBundle: NWSBundle): HourlyBucket[] {
     const hourlyTimeline = this.createHourlyTimeline();
     const gridData = nwsBundle.forecastGridData.properties;
@@ -67,9 +61,6 @@ export class TimeBucketizerService {
     });
   }
 
-  /**
-   * Extracts the value for a specific hour from an NWS grid element
-   */
   private extractValueForHour(gridElement: any, targetHour: Date): number | undefined {
     if (!gridElement || !gridElement.values) {
       return undefined;
@@ -85,9 +76,6 @@ export class TimeBucketizerService {
     return undefined;
   }
 
-  /**
-   * Extracts weather description for a specific hour from hourly forecast
-   */
   private extractWeatherForHour(hourlyForecast: any, targetHour: Date): string | undefined {
     if (!hourlyForecast || !hourlyForecast.properties || !hourlyForecast.properties.periods) {
       return undefined;
@@ -105,10 +93,6 @@ export class TimeBucketizerService {
     return undefined;
   }
 
-  /**
-   * Parses NWS time interval format (ISO 8601 with duration)
-   * Example: "2024-02-22T18:00:00+00:00/PT1H"
-   */
   private parseNWSTimeInterval(validTime: string): { start: Date; end: Date } | null {
     try {
       const [startTimeStr, durationStr] = validTime.split('/');
@@ -129,16 +113,10 @@ export class TimeBucketizerService {
     }
   }
 
-  /**
-   * Checks if an hour falls within a time interval
-   */
   private hourFallsInInterval(hour: Date, interval: { start: Date; end: Date }): boolean {
     return hour >= interval.start && hour < interval.end;
   }
 
-  /**
-   * Gets school decision windows for a given date
-   */
   getSchoolWindows(date: Date) {
     const baseDate = new Date(date);
     baseDate.setHours(0, 0, 0, 0);
@@ -156,18 +134,12 @@ export class TimeBucketizerService {
     };
   }
 
-  /**
-   * Filters buckets to a specific time window
-   */
   filterBucketsToWindow(buckets: HourlyBucket[], start: Date, end: Date): HourlyBucket[] {
     return buckets.filter(bucket => 
       bucket.timestamp >= start && bucket.timestamp < end
     );
   }
 
-  /**
-   * Debug method to show available NWS grid properties
-   */
   getAvailableGridProperties(nwsBundle: NWSBundle): string[] {
     const gridData = nwsBundle.forecastGridData.properties;
     return Object.keys(gridData).filter(key => 

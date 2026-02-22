@@ -52,7 +52,6 @@ function App() {
     }
   };
 
-  // Generate predictions when data is available
   useEffect(() => {
     if (modelState.nwsBundle && modelState.hourlyBuckets.length > 0) {
       const predictions = predictionEngine.generateWeeklyPredictions(modelState);

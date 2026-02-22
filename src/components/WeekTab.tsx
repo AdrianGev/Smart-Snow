@@ -68,10 +68,8 @@ export const WeekTab: React.FC<WeekTabProps> = ({
 
   return (
     <div className="space-y-3">
-      {/* Master Timeline Reference */}
       {renderMasterTimeline()}
 
-      {/* Header with Weekly Summary */}
       {weeklySummary && (
         <div className="bg-white rounded border border-gray-200 p-3">
           <h2 className="text-base font-semibold mb-2">Weekly Summary</h2>
@@ -104,7 +102,6 @@ export const WeekTab: React.FC<WeekTabProps> = ({
         </div>
       )}
 
-      {/* Day Cards */}
       <div className="space-y-2">
         {predictions.map((prediction) => {
           const commuteData = predictionEngine.getCommuteWindowSummary(prediction.date, hourlyBuckets);
@@ -112,7 +109,6 @@ export const WeekTab: React.FC<WeekTabProps> = ({
           
           return (
             <div key={prediction.date.toISOString()} className="bg-white rounded border border-gray-200 p-3">
-              {/* Day Title Row */}
               <div className="flex items-center justify-between mb-2">
                 <div>
                   <h3 className="text-base font-semibold text-gray-900">
@@ -134,7 +130,6 @@ export const WeekTab: React.FC<WeekTabProps> = ({
                 </div>
               </div>
 
-              {/* Probabilities */}
               <div className="mb-2">
                 <div className="flex space-x-2 text-xs">
                   <div className="flex-1">
@@ -218,9 +213,6 @@ export const WeekTab: React.FC<WeekTabProps> = ({
                 </div>
               </div>
 
-              {/* Timeline removed - now using master timeline at top */}
-
-              {/* Math Link */}
               <div className="mt-2 pt-2 border-t border-gray-200 text-center">
                 <button
                   onClick={() => onViewMath(prediction)}
